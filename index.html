@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"><title>HTML Entity Encoder | Jesse DevUtils</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-900 text-white p-8">
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-3xl font-bold text-amber-400 mb-2">HTML Entity Encoder</h1>
+        <p class="mb-8 text-slate-300">Safely encode characters for HTML. 
+            <a href="https://jesse-dev-utils.netlify.app" class="underline text-amber-500">Need JSON tools? Click here.</a>
+        </p>
+        <textarea id="input" class="w-full h-40 bg-slate-800 p-4 mb-4 rounded text-sm focus:ring-2 focus:ring-amber-500 outline-none" placeholder="Type characters like < > & ..."></textarea>
+        <textarea id="output" readonly class="w-full h-40 bg-slate-950 p-4 rounded text-amber-200 text-sm shadow-inner" placeholder="Encoded result..."></textarea>
+    </div>
+    <script>
+        const input = document.getElementById('input');
+        const output = document.getElementById('output');
+        input.addEventListener('input', () => {
+            output.value = input.value.replace(/[\u00A0-\u9999<>\&]/g, (i) => `&#${i.charCodeAt(0)};`);
+        });
+    </script>
+</body>
+</html>
