@@ -1,30 +1,46 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"><title>HTML Encoder | Jesse DevUtils</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Entity Encoder | Secure Web Utilities | Jesse DevUtils</title>
+    <meta name="description" content="Safely encode and decode HTML entities to prevent XSS and rendering issues. A high-performance security tool for web developers.">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "HTML Entity Encoder",
+      "applicationCategory": "SecurityApplication",
+      "operatingSystem": "All",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+    </script>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-slate-900 text-white min-h-screen font-sans">
-   <nav class="bg-slate-900 border-b border-slate-800 p-4 sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto flex justify-between items-center">
-        <a href="https://devutils-io.netlify.app" class="flex items-center gap-2 group">
-            <div class="h-8 w-8 bg-gradient-to-br from-teal-500 to-blue-600 rounded flex items-center justify-center font-bold text-white text-sm">D</div>
-            <span class="text-slate-300 group-hover:text-white font-medium transition-colors">Back to DevUtils.io</span>
-        </a>
-        <div class="hidden md:block text-xs text-slate-500 font-mono italic">Professional Utility Hub &bull; v1.0</div>
-    </div>
-</nav>
-    <div class="max-w-4xl mx-auto px-8">
-        <h1 class="text-3xl font-bold text-amber-400 mb-2">HTML Entity Encoder</h1>
-        <p class="text-slate-400 mb-8 text-left">Safely encode characters for web development.</p>
-        <textarea id="input" class="w-full h-40 bg-slate-800 p-4 rounded mb-4 border border-slate-700 outline-none focus:ring-2 focus:ring-amber-500" placeholder="Type characters here..."></textarea>
-        <textarea id="output" readonly class="w-full h-40 bg-slate-950 p-4 rounded border border-slate-800 text-amber-200" placeholder="Result..."></textarea>
-    </div>
+<body class="bg-[#0f172a] text-slate-200 min-h-screen font-sans">
+    <nav class="bg-slate-900/80 backdrop-blur-md border-b border-slate-800 p-4 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="https://devutils-io.netlify.app" class="flex items-center gap-2 group">
+                <div class="h-8 w-8 bg-gradient-to-br from-blue-500 to-indigo-600 rounded flex items-center justify-center font-bold text-white text-sm shadow-lg shadow-blue-500/20">D</div>
+                <span class="text-slate-300 group-hover:text-white font-medium transition-colors">Back to DevUtils.io</span>
+            </a>
+            <span class="text-[10px] text-slate-500 font-mono font-bold uppercase tracking-widest">Security Engine v2.0</span>
+        </div>
+    </nav>
+    <main class="max-w-4xl mx-auto px-6 py-12">
+        <h1 class="text-4xl font-black text-white mb-2">HTML Entity <span class="text-blue-500">Encoder</span></h1>
+        <p class="text-slate-400 mb-8">Secure your strings for safe browser rendering and XSS prevention.</p>
+        <div class="space-y-6">
+            <textarea id="input" class="w-full bg-slate-950 border border-slate-800 p-6 rounded-xl font-mono text-sm focus:ring-2 focus:ring-blue-500 outline-none h-48" placeholder="Paste your code here..."></textarea>
+            <div id="output" class="w-full bg-slate-900 border border-slate-800 p-6 rounded-xl font-mono text-sm text-blue-300 min-h-[100px] break-all"></div>
+        </div>
+    </main>
     <script>
         const input = document.getElementById('input');
         const output = document.getElementById('output');
         input.addEventListener('input', () => {
-            output.value = input.value.replace(/[\u00A0-\u9999<>\&]/g, (i) => `&#${i.charCodeAt(0)};`);
+            output.textContent = input.value.replace(/[\u00A0-\u9999<>\&]/g, i => '&#'+i.charCodeAt(0)+';');
         });
     </script>
 </body>
